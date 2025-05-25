@@ -100,12 +100,13 @@ useEffect(() => {
 
   // Manejo de carga
   if (loading) {
-    return (
-      <div className="loading">
-        <p>Cargando aplicación...</p>
-      </div>
-    );
-  }
+  return (
+    <div className="loading">
+      <div className="spinner"></div>
+      <p>Cargando...</p>
+    </div>
+  );
+}
 
   // Pantalla de inicio de sesión
   if (!currentUser) {
