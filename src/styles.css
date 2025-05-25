@@ -1,0 +1,215 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables de diseño */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --bg-color: #f4f4f4;
+  --text-color: #333;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --radius: 10px;
+  --spacing: 1rem;
+  --font-family: 'Segoe UI', sans-serif;
+  --transition-speed: 0.3s;
+}
+
+/* Modo oscuro */
+.dark-mode {
+  --bg-color: #1e1e2f;
+  --text-color: #f5f5f5;
+  --card-bg: #2a2a3d;
+  --shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+}
+
+/* General */
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec); /* 👈 Fondo degradado */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  transition: background-color var(--transition-speed) ease;
+}
+
+/* Contenedor principal */
+.container {
+  background-color: var(--card-bg);
+  padding: 2.5rem 3rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 600px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2.5rem; /* Aumentamos el margen inferior */
+  color: var(--primary-color);
+  font-size: 2rem;
+  position: relative;
+  padding-right: 2rem; /* Espacio extra para evitar que el texto toque el botón */
+}
+
+/* Botón de modo oscuro */
+.theme-toggle {
+  position: absolute;
+  top: 1.5rem; /* Bajamos un poco el botón */
+  right: 2rem; /* Alejamos más el botón del borde derecho */
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 10; /* Asegura que esté por encima de otros elementos */
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(90deg);
+}
+
+/* Formulario */
+form {
+  display: flex;
+  gap: var(--spacing);
+  margin-bottom: 1.5rem;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: border-color var(--transition-speed) ease;
+}
+
+input[type="text"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+button {
+  padding: 0.75rem 1rem;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* Lista de tareas */
+ul {
+  list-style: none;
+  margin-top: var(--spacing);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animación de salida */
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+li {
+  background-color: #ecf0f1;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all var(--transition-speed) ease;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+li.exiting {
+  animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+/* Tarea completada */
+.completed {
+  text-decoration: line-through;
+  color: #7f8c8d;
+  background-color: #dcdcdc;
+}
+
+/* Botón de eliminar */
+.delete-btn {
+  background-color: #e74c3c;
+  padding: 0.4rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Botón limpiar todas */
+#clear-all {
+  margin-top: 1rem;
+  width: 100%;
+  background-color: #95a5a6;
+}
+
+#clear-all:hover {
+  background-color: #7f8c8d;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  input[type="text"] {
+    font-size: 0.9rem;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .delete-btn {
+    align-self: flex-end;
+  }
+}
