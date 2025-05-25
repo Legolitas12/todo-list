@@ -13,7 +13,7 @@ import {
 } from "firebase/firestore";
 import {
   getAuth,
-  signInWithPopup, // ✅ Importado como signInWithPopup
+  signInWithPopup,
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged
@@ -34,17 +34,18 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
+// ✅ Funciones corregidas
+export const signInWithGoogle = () => signInWithPopup(auth, provider);
+export const logout = () => signOut(auth); // ✅ Ahora usa auth
+
 // Colección de tareas
 export const tasksCollection = collection(db, "tasks");
 
-// Exporta todas las funciones necesarias
+// Exporta otras funciones necesarias
 export {
   db,
   auth,
   provider,
-  // Exporta signInWithPopup como signInWithGoogle
-  signInWithPopup as signInWithGoogle, // ✅ Alias correcto
-  signOut as logout,
   onAuthStateChanged,
   collection,
   onSnapshot,

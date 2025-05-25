@@ -86,6 +86,8 @@ function App() {
     }
   };
 
+  
+
   // Manejo de carga
   if (loading) {
     return (
@@ -135,6 +137,7 @@ function App() {
             await logout();
           } catch (err) {
             console.error("Error al cerrar sesión:", err);
+            setError("No se pudo cerrar sesión. Inténtalo de nuevo.");
           }
         }}
         style={{ marginBottom: "1rem", cursor: "pointer" }}
