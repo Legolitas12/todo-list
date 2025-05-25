@@ -21,6 +21,16 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+  const savedMode = localStorage.getItem("darkMode") === "true";
+  setDarkMode(savedMode);
+}, []);
+
+useEffect(() => {
+  localStorage.setItem("darkMode", darkMode);
+  document.body.classList.toggle("dark-mode", darkMode);
+}, [darkMode]);
+
   // Escuchar cambios en Firestore (filtrado por usuario)
   useEffect(() => {
     if (!currentUser) return;

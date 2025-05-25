@@ -22,8 +22,9 @@
 /* Modo oscuro */
 .dark-mode {
   --bg-color: #1e1e2f;
-  --text-color: #f5f5f5;
   --card-bg: #2a2a3d;
+  --text-color: #f5f5f5;
+  --primary-color: #61dafb;
   --shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
 }
 
